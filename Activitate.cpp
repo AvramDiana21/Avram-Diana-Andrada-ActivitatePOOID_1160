@@ -110,14 +110,14 @@ public:
             this->denumire = b.denumire;
             this->avionInAeroport = b.avionInAeroport;
             this->numarZboruri = b.numarZboruri;
-        } // FIX: am scos 'p'
+        } 
         return *this;
     }
 
     bool operator==(const Aeroport& b) const {
         return (this->capacitate == b.capacitate &&
             this->suprafata == b.suprafata &&
-            this->denumire == b.denumire && // FIX: am scos 'p'
+            this->denumire == b.denumire && 
             this->avionInAeroport == b.avionInAeroport &&
             this->numarZboruri == b.numarZboruri);
     }
