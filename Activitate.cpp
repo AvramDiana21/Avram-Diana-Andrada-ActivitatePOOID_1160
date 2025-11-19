@@ -1,4 +1,4 @@
-#include <iostream>
+    #include <iostream>
 #include <string>
 using namespace std;
 
@@ -7,7 +7,7 @@ private:
     int anFabricatie;
     float lungime;
     string model;
-    int* codSerie; 
+    int* codSerie;
     static int numarAvioane;
 public:
     Avion() {
@@ -29,13 +29,15 @@ public:
         delete codSerie;
         numarAvioane--;
     }
-Avion(const Avion& a) {
+
+    Avion(const Avion& a) {
         this->anFabricatie = a.anFabricatie;
         this->lungime = a.lungime;
         this->model = a.model;
         this->codSerie = new int(*a.codSerie);
         numarAvioane++;
     }
+
     Avion& operator=(const Avion& a) {
         if (this != &a) {
             this->anFabricatie = a.anFabricatie;
@@ -46,23 +48,24 @@ Avion(const Avion& a) {
         }
         return *this;
     }
+
     bool operator==(const Avion& a) const {
         return (this->anFabricatie == a.anFabricatie &&
             this->lungime == a.lungime &&
             this->model == a.model &&
             *this->codSerie == *a.codSerie);
     }
-int getAnFabricatie() { return this->anFabricatie; }
+
+    int getAnFabricatie() { return this->anFabricatie; }
     float getLungime() { return this->lungime; }
     string getModel() { return this->model; }
-    int getCodSerie() { return *this->codSerie; } 
+    int getCodSerie() { return *this->codSerie; }
 
     static int getNumarAvioane() { return numarAvioane; }
     void setAnFabricatie(int an) { this->anFabricatie = an; }
     void setLungime(float lung) { this->lungime = lung; }
     void setModel(string mdl) { this->model = mdl; }
-    void setCodSerie(int cod) { *this->codSerie = cod; }   
-
+    void setCodSerie(int cod) { *this->codSerie = cod; }
 };
 
 int Avion::numarAvioane = 0;
@@ -99,6 +102,7 @@ public:
         this->denumire = nume;
         this->numarZboruri = nrZboruri;
     }
+
     Aeroport& operator=(const Aeroport& b) {
         if (this != &b) {
             this->capacitate = b.capacitate;
@@ -106,16 +110,17 @@ public:
             this->denumire = b.denumire;
             this->avionInAeroport = b.avionInAeroport;
             this->numarZboruri = b.numarZboruri;
-        }p
+        } // FIX: am scos 'p'
         return *this;
     }
-        bool operator==(const Aeroport& b) const {
+
+    bool operator==(const Aeroport& b) const {
         return (this->capacitate == b.capacitate &&
             this->suprafata == b.suprafata &&
-            this->denumire == b.denumire &&p
+            this->denumire == b.denumire && // FIX: am scos 'p'
             this->avionInAeroport == b.avionInAeroport &&
             this->numarZboruri == b.numarZboruri);
-        }
+    }
 
     ~Aeroport() {}
 
@@ -147,7 +152,7 @@ int main() {
     avion2.setModel("Boeing 777");
     cout << "Numar total avioane: " << Avion::getNumarAvioane() << endl;
 
-    Aeroport aeroport1(20, 1000.0, "Otopeni", avion1, 5); 
+    Aeroport aeroport1(20, 1000.0, "Otopeni", avion1, 5);
 
     cout << "\nInformatii despre Aeroport:\n";
     cout << "Capacitate: " << aeroport1.getCapacitate() << endl;
@@ -161,8 +166,4 @@ int main() {
     cout << "CodSerie: " << aeroport1.getAvionInAeroport().getCodSerie() << endl;
 
     return 0;
-
 }
-
-
-
