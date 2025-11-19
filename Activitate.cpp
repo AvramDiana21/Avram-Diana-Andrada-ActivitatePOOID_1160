@@ -29,4 +29,28 @@ public:
         delete codSerie;
         numarAvioane--;
     }
+Avion(const Avion& a) {
+        this->anFabricatie = a.anFabricatie;
+        this->lungime = a.lungime;
+        this->model = a.model;
+        this->codSerie = new int(*a.codSerie);
+        numarAvioane++;
+    }
+    Avion& operator=(const Avion& a) {
+        if (this != &a) {
+            this->anFabricatie = a.anFabricatie;
+            this->lungime = a.lungime;
+            this->model = a.model;
+            delete codSerie;
+            this->codSerie = new int(*a.codSerie);
+        }
+        return *this;
+    }
+    bool operator==(const Avion& a) const {
+        return (this->anFabricatie == a.anFabricatie &&
+            this->lungime == a.lungime &&
+            this->model == a.model &&
+            *this->codSerie == *a.codSerie);
+    }
+
 
