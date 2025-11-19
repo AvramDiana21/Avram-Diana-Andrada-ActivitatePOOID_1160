@@ -52,5 +52,18 @@ Avion(const Avion& a) {
             this->model == a.model &&
             *this->codSerie == *a.codSerie);
     }
+int getAnFabricatie() { return this->anFabricatie; }
+    float getLungime() { return this->lungime; }
+    string getModel() { return this->model; }
+    int getCodSerie() { return *this->codSerie; } 
+
+    static int getNumarAvioane() { return numarAvioane; }
+    void setAnFabricatie(int an) { this->anFabricatie = an; }
+    void setLungime(float lung) { this->lungime = lung; }
+    void setModel(string mdl) { this->model = mdl; }
+    void setCodSerie(int cod) { *this->codSerie = cod; }   
+
+};
+
 
 
