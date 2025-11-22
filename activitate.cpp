@@ -74,7 +74,7 @@ istream& operator>>(istream& in, CarteDinBiblioteca& c) {
 	cout << "Titlu: ";
 	in >> buffer;
 
-	cout << "Nr pg";
+	cout << "Nr pg: ";
 	in >> n;
 
 	c.setTitlu(buffer);
