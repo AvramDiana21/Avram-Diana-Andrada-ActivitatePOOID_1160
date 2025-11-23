@@ -78,6 +78,25 @@ public:
         numarTotalDiete++;
     }
 
+    Dieta(string tip, float durata, const char* scop) : cantitateProteineZilnic(50.0f) {
+        this->tipDieta = tip;
+        this->durataZile = durata;
+
+        this->scop = new char[strlen(scop) + 1];
+        strcpy_s(this->scop, strlen(scop) + 1, scop);
+
+        numarTotalDiete++;
+    }
+    Dieta(string tip, const char* scop) : cantitateProteineZilnic(50.0f) {
+        this->tipDieta = tip;
+        this->durataZile = 0;   // nu a fost specificata durata
+
+        this->scop = new char[strlen(scop) + 1];
+        strcpy_s(this->scop, strlen(scop) + 1, scop);
+
+        numarTotalDiete++;
+    }
+
     ~Dieta() {
         if (this->scop != NULL) {
             delete[] this->scop;
@@ -117,6 +136,26 @@ public:
         strcpy_s(nivelDificultate, strlen("Mediu") + 1, "Mediu");
         numarTotalActivitati++;
     }
+    ActivitateFizica(string tip, int durata, const char* nivel)
+        : caloriiArseEstimativ(200) {
+        this->tipActivitate = tip;
+        this->durataMinute = durata;
+
+        this->nivelDificultate = new char[strlen(nivel) + 1];
+        strcpy_s(this->nivelDificultate, strlen(nivel) + 1, nivel);
+
+        numarTotalActivitati++;
+    }
+    ActivitateFizica(string tip, int durata, const char* nivel, int calorii)
+        : caloriiArseEstimativ(calorii) {
+        this->tipActivitate = tip;
+        this->durataMinute = durata;
+
+        this->nivelDificultate = new char[strlen(nivel) + 1];
+        strcpy_s(this->nivelDificultate, strlen(nivel) + 1, nivel);
+
+        numarTotalActivitati++;
+    }
 
     ~ActivitateFizica() {
         if (nivelDificultate != NULL) {
@@ -152,18 +191,30 @@ int main() {
 
     Aliment aliment3("Banane");
     aliment3.afisare();
-
+    
     cout << "\n";
 
     //Dieta
     Dieta dieta1;
     dieta1.afisare();
+    
+    Dieta dieta2("Keto", 21, "Slabire");             
+    dieta2.afisare();
+
+    Dieta dieta3("Low-carb", "Detox");               
+    dieta3.afisare();
 
     cout << "\n";
 
     //ActivitateFizica
     ActivitateFizica act1;
     act1.afisare();
+
+    ActivitateFizica act2("Inot", 45, "Greu");         
+    act2.afisare();
+
+    ActivitateFizica act3("Cycling", 60, "Mediu", 450);
+    act3.afisare();
 
     return 0;
 }
