@@ -331,54 +331,95 @@ public:
 int ActivitateFizica::numarTotalActivitati = 0;
 
 
-//MAIN 
 int main() {
-    //Aliment
-    Aliment aliment1;
+    cout << "=============================================\n";
+    cout << "  Alimentatie – Diete – Activitate fizica\n";
+    cout << "=============================================\n\n";
+
+    //==================== ALIMENT ====================
+    cout << "---------- CLASA ALIMENT ----------\n";
+
+    Aliment aliment1;                               
+    cout << "\n[Aliment 1 - constructor implicit]\n";
     aliment1.afisare();
 
-    Aliment aliment2("Portocale", 47, "Spania");
+    Aliment aliment2("Portocale", 47, "Spania");  
+    cout << "\n[Aliment 2 - constructor cu toti parametrii]\n";
     aliment2.afisare();
 
-    Aliment aliment3("Banane");
+    Aliment aliment3("Banane");                    
+    cout << "\n[Aliment 3 - constructor cu nume]\n";
     aliment3.afisare();
 
-    cout << "\n";
-
-    //Dieta
-    Dieta dieta1;
-    dieta1.afisare();
-
-    Dieta dieta2("Keto", 21, "Slabire");
-    dieta2.afisare();
-
-    Dieta dieta3("Low-carb", "Detox");
-    dieta3.afisare();
-
-    cout << "\n";
-
-    //ActivitateFizica
-    ActivitateFizica act1;
-    act1.afisare();
-
-    ActivitateFizica act2("Inot", 45, "Greu");
-    act2.afisare();
-
-    ActivitateFizica act3("Cycling", 60, "Mediu", 450);
-    act3.afisare();
-
+    cout << "-> Modificam originea lui aliment3 cu setter...\n";
     aliment3.setOrigine("Grecia");
-    cout << "Dupa modificare origine aliment3: " << aliment3.getOrigine() << endl;
+    cout << "Origine noua (getOrigine): " << aliment3.getOrigine() << "\n\n";
 
+    cout << "-> Testare constructor de copiere pentru Aliment (copieAliment din aliment2)\n";
     Aliment copieAliment = aliment2;
     copieAliment.afisare();
 
+    cout << "Numar total obiecte Aliment (get static): "
+         << Aliment::getNumarTotalAlimente() << "\n\n";
+
+
+    //===================== DIETA =====================
+    cout << "---------- CLASA DIETA ----------\n";
+
+    Dieta dieta1;                                   
+    cout << "\n[Dieta 1 - constructor implicit]\n";
+    dieta1.afisare();
+
+    Dieta dieta2("Keto", 21, "Slabire");           
+    cout << "\n[Dieta 2 - constructor cu toti parametrii]\n";
+    dieta2.afisare();
+
+    Dieta dieta3("Low-carb", "Detox");            
+    cout << "\n[Dieta 3 - constructor cu tip + scop]\n";
+    dieta3.afisare();
+
+    cout << "-> Modificam durata pentru dieta3 cu setter...\n";
+    dieta3.setDurataZile(14);
+    cout << "Durata noua (getDurataZile): " << dieta3.getDurataZile() << " zile\n\n";
+
+    cout << "-> Testare constructor de copiere pentru Dieta (copieDieta din dieta2)\n";
     Dieta copieDieta = dieta2;
     copieDieta.afisare();
 
+    cout << "Numar total obiecte Dieta (get static): "
+         << Dieta::getNumarTotalDiete() << "\n\n";
+
+
+    //================= ACTIVITATE FIZICA =================
+    cout << "----- CLASA ACTIVITATEFIZICA -----\n";
+
+    ActivitateFizica act1;                         
+    cout << "\n[Activitate 1 - constructor implicit]\n";
+    act1.afisare();
+
+    ActivitateFizica act2("Inot", 45, "Greu");     
+    cout << "\n[Activitate 2 - constructor cu tip/durata/nivel]\n";
+    act2.afisare();
+
+    ActivitateFizica act3("Cycling", 60, "Mediu", 450); 
+    cout << "\n[Activitate 3 - constructor cu toti parametrii]\n";
+    act3.afisare();
+
+    cout << "-> Modificam durata pentru act2 cu setter...\n";
+    act2.setDurataMinute(50);
+    cout << "Durata noua (getDurataMinute): " << act2.getDurataMinute() << " minute\n\n";
+
+    cout << "-> Testare constructor de copiere pentru ActivitateFizica (copieAct din act2)\n";
     ActivitateFizica copieAct = act2;
     copieAct.afisare();
 
+    cout << "Numar total obiecte ActivitateFizica (get static): "
+         << ActivitateFizica::getNumarTotalActivitati() << "\n\n";
+
+
+    cout << "=============================================\n";
+    cout << "   Sfarsit testare clase.\n";
+    cout << "=============================================\n";
 
     return 0;
 }
