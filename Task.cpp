@@ -4,7 +4,6 @@
 #include <cstring>   
 using namespace std;
 
-
 //CLASA ALIMENT
 class Aliment {
 private:
